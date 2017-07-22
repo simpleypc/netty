@@ -1,11 +1,14 @@
 package com.netty.codec;
 
+import org.msgpack.annotation.Message;
+
 import java.io.Serializable;
 import java.nio.ByteBuffer;
 
 /**
  * Created by ypc on 2017/6/22.
  */
+@Message
 public class UserInfo implements Serializable {
 
     private static final long serialVersionUID = -2082634751978299464L;
