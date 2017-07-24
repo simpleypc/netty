@@ -15,8 +15,6 @@ public class EchoClientHandler extends ChannelHandlerAdapter {
 
     private static final Logger logger = Logger.getLogger(EchoClientHandler.class.getName());
 
-    public EchoClientHandler() {}
-
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         for (UserInfo info:userInfo(1000)) {

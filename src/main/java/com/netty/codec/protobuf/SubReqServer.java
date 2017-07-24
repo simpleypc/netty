@@ -1,8 +1,6 @@
-package com.netty.codec.messagePack;
+package com.netty.codec.protobuf;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -10,25 +8,19 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
-import io.netty.handler.codec.LengthFieldPrepender;
-import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.protobuf.ProtobufDecoder;
+import io.netty.handler.codec.protobuf.ProtobufEncoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
 /**
- * Created by ypc on 2017/4/3.
- *
- * 测试 MessagePack 编解码测试 并通过LengthFieldBasedFrameDecoder 与 LengthFieldPrepender 解决粘包／半包问题
-    socketChannel.pipeline().addLast("frameDecoder", new LengthFieldBasedFrameDecoder(65535, 0 , 2, 0 ,2));
-    socketChannel.pipeline().addLast("MessagePack Decoder", new MessagePackDecoder());
-    socketChannel.pipeline().addLast("frameEncoder", new LengthFieldPrepender(2));
-    socketChannel.pipeline().addLast("MessagePack Encoder", new MessagePackEncoder());
-
- 注：实体类 UserInfo 必须加入 @Message 注解
+ * Created by ypc on 2017/7/24.
+ * Protobuf 版本的图书订购服务端开发
  */
-public class EchoServer {
+public class SubReqServer {
+
     public static void main(String[] args) {
         int port = 9090;
         if(args != null && args.length > 0){
@@ -38,7 +30,7 @@ public class EchoServer {
                 e.printStackTrace();
             }
         }
-        new EchoServer().bind(port);
+        new SubReqServer().bind(port);
     }
 
     private void bind(int port) {
@@ -54,11 +46,21 @@ public class EchoServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            socketChannel.pipeline().addLast("frameDecoder", new LengthFieldBasedFrameDecoder(65535, 0 , 2, 0 ,2));
-                            socketChannel.pipeline().addLast("MessagePack Decoder", new MessagePackDecoder());
-                            socketChannel.pipeline().addLast("frameEncoder", new LengthFieldPrepender(2));
-                            socketChannel.pipeline().addLast("MessagePack Encoder", new MessagePackEncoder());
-                            socketChannel.pipeline().addLast(new EchoServerHandler());
+                            // 用于半包处理
+                            socketChannel.pipeline().addLast(new ProtobufVarint32FrameDecoder());
+
+                            // 添加解码器 参数 com.google.protobuf.MessageLite
+                            // 实际上是告诉 ProtobufDecoder 需要解码的目标类是什么
+                            SubscribeReqProto.SubscribeReq subscribeReq = SubscribeReqProto.SubscribeReq.getDefaultInstance();
+                            socketChannel.pipeline().addLast(new ProtobufDecoder(subscribeReq));
+
+                            // 一个编码器，用于添加Google协议缓冲区
+                            socketChannel.pipeline().addLast(new ProtobufVarint32LengthFieldPrepender());
+
+                            // 添加编码器
+                            socketChannel.pipeline().addLast(new ProtobufEncoder());
+
+                            socketChannel.pipeline().addLast(new SubReqServerHandler());
                         }
                     });
 
