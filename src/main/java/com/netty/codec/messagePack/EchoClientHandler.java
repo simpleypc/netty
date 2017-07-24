@@ -19,16 +19,19 @@ public class EchoClientHandler extends ChannelHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ctx.writeAndFlush(userInfo(3));
+        for (UserInfo info:userInfo(1000)) {
+           ctx.write(info);
+        }
+        ctx.flush();
     }
 
     private List<UserInfo> userInfo(int sendNum) {
         List<UserInfo> userInfos = new ArrayList<UserInfo>();
         UserInfo userInfo = null;
-        for (int i = 0; i < sendNum; i++) {
+        for (int i = 1; i <= sendNum; i++) {
             userInfo = new UserInfo();
             userInfo.setUserID(i);
-            userInfo.setUserName("YangPengCheng ---> " + i);
+            userInfo.setUserName("YangPengCheng ---> ");
             userInfos.add(userInfo);
         }
         return userInfos;
@@ -37,7 +40,7 @@ public class EchoClientHandler extends ChannelHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("Client receive the messagePack message : " + msg);
-        ctx.write(msg);
+        //ctx.write(msg);
     }
 
     @Override

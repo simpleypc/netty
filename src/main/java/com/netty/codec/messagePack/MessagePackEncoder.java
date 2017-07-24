@@ -16,6 +16,6 @@ public class MessagePackEncoder extends MessageToByteEncoder<Object> {
         // serialize
         byte[] raw = messagePack.write(msg);
         ByteBuf byteBuf = out.writeBytes(raw);
-        System.out.println(byteBuf);
+        //System.out.println(byteBuf);
     }
 }

@@ -11,12 +11,20 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
 /**
  * Created by ypc on 2017/4/3.
+ *
+ * 测试 MessagePack 编解码测试 并通过LengthFieldBasedFrameDecoder 与 LengthFieldPrepender 解决粘包／半包问题
+    socketChannel.pipeline().addLast("frameDecoder", new LengthFieldBasedFrameDecoder(65535, 0 , 2, 0 ,2));
+    socketChannel.pipeline().addLast("MessagePack Decoder", new MessagePackDecoder());
+    socketChannel.pipeline().addLast("frameEncoder", new LengthFieldPrepender(2));
+    socketChannel.pipeline().addLast("MessagePack Encoder", new MessagePackEncoder());
  */
 public class EchoServer {
     public static void main(String[] args) {
@@ -44,7 +52,9 @@ public class EchoServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
+                            socketChannel.pipeline().addLast("frameDecoder", new LengthFieldBasedFrameDecoder(65535, 0 , 2, 0 ,2));
                             socketChannel.pipeline().addLast("MessagePack Decoder", new MessagePackDecoder());
+                            socketChannel.pipeline().addLast("frameEncoder", new LengthFieldPrepender(2));
                             socketChannel.pipeline().addLast("MessagePack Encoder", new MessagePackEncoder());
                             socketChannel.pipeline().addLast(new EchoServerHandler());
                         }

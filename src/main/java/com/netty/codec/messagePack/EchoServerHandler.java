@@ -14,7 +14,7 @@ public class EchoServerHandler extends ChannelHandlerAdapter{
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         List<UserInfo> userInfos = (List<UserInfo>) msg;
-        System.out.println("Server receive the messagePack message : " + userInfos.toString());
+        System.out.println("Server receive the messagePack message : " + msg);
         ctx.writeAndFlush(userInfos);
     }
 
