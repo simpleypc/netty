@@ -1,6 +1,5 @@
 package com.netty.codec.protobuf;
 
-import com.netty.codec.UserInfo;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
