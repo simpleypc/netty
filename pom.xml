@@ -45,6 +45,19 @@
       <artifactId>grpc-stub</artifactId>
       <version>1.2.0</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.jibx/jibx-bind -->
+    <!--<dependency>
+      <groupId>org.jibx</groupId>
+      <artifactId>jibx-bind</artifactId>
+      <version>1.2.2</version>
+    </dependency>-->
+    <!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
+    <dependency>
+      <groupId>com.thoughtworks.xstream</groupId>
+      <artifactId>xstream</artifactId>
+      <version>1.4.9</version>
+    </dependency>
+
 
     <dependency>
       <groupId>junit</groupId>
