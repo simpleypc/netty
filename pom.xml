@@ -87,12 +87,6 @@
           </execution>
         </executions>
       </plugin>
-    </plugins>
-  </build>
-
-  <!--<build>
-    <finalName>netty</finalName>
-    <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -102,5 +96,5 @@
         </configuration>
       </plugin>
     </plugins>
-  </build>-->
+  </build>
 </project>
