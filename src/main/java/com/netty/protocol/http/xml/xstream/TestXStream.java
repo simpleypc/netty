@@ -1,8 +1,8 @@
-package com.netty.http.xml.xstream;
+package com.netty.protocol.http.xml.xstream;
 
-import com.netty.http.xml.pojo.Address;
-import com.netty.http.xml.pojo.Order;
-import com.netty.http.xml.pojo.OrderFactory;
+import com.netty.protocol.http.xml.pojo.Address;
+import com.netty.protocol.http.xml.pojo.Order;
+import com.netty.protocol.http.xml.pojo.OrderFactory;
 import com.thoughtworks.xstream.XStream;
 
 

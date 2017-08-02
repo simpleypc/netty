@@ -1,4 +1,4 @@
-package com.netty.http.xml.pojo;
+package com.netty.protocol.http.xml.pojo;
 
 /**
  * Supported shipment methods. The "INTERNATIONAL" shipment methods can only be

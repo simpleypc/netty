@@ -1,10 +1,10 @@
-package com.netty.http.xml.Test;
+package com.netty.protocol.http.xml.Test;
 
 
-import com.netty.http.xml.codec.HttpXmlRequest;
-import com.netty.http.xml.codec.HttpXmlResponse;
-import com.netty.http.xml.pojo.Address;
-import com.netty.http.xml.pojo.Order;
+import com.netty.protocol.http.xml.codec.HttpXmlRequest;
+import com.netty.protocol.http.xml.codec.HttpXmlResponse;
+import com.netty.protocol.http.xml.pojo.Address;
+import com.netty.protocol.http.xml.pojo.Order;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;

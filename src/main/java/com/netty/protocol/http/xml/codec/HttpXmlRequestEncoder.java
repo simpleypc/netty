@@ -1,4 +1,4 @@
-package com.netty.http.xml.codec;
+package com.netty.protocol.http.xml.codec;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

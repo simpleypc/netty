@@ -1,8 +1,8 @@
-package com.netty.http.xml.Test;
+package com.netty.protocol.http.xml.Test;
 
-import com.netty.http.xml.codec.HttpXmlRequestEncoder;
-import com.netty.http.xml.codec.HttpXmlResponseDecoder;
-import com.netty.http.xml.pojo.Order;
+import com.netty.protocol.http.xml.codec.HttpXmlRequestEncoder;
+import com.netty.protocol.http.xml.pojo.Order;
+import com.netty.protocol.http.xml.codec.HttpXmlResponseDecoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -19,6 +19,7 @@ import java.net.InetSocketAddress;
 
 /**
  * Created by ypc on 2017/7/27.
+ * 可以参考 http://blog.csdn.net/kingsonyoung/article/details/50524866
  */
 public class HttpXmlClient {
 

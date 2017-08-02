@@ -1,4 +1,4 @@
-package com.netty.http.xml.codec;
+package com.netty.protocol.http.xml.codec;
 
 /**
  * Created by ypc on 2017/7/27.
@@ -9,10 +9,10 @@ package com.netty.http.xml.codec;
  * 而是使用了 XStream。方法也很简单，可以参考 http://blog.csdn.net/kingsonyoung/article/details/50524866
  */
 
-import com.netty.http.xml.pojo.Address;
-import com.netty.http.xml.pojo.Customer;
-import com.netty.http.xml.pojo.Order;
-import com.netty.http.xml.pojo.Shipping;
+import com.netty.protocol.http.xml.pojo.Customer;
+import com.netty.protocol.http.xml.pojo.Order;
+import com.netty.protocol.http.xml.pojo.Shipping;
+import com.netty.protocol.http.xml.pojo.Address;
 import com.thoughtworks.xstream.XStream;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

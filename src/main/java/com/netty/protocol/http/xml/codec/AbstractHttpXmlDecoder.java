@@ -1,9 +1,9 @@
-package com.netty.http.xml.codec;
+package com.netty.protocol.http.xml.codec;
 
-import com.netty.http.xml.pojo.Address;
-import com.netty.http.xml.pojo.Customer;
-import com.netty.http.xml.pojo.Order;
-import com.netty.http.xml.pojo.Shipping;
+import com.netty.protocol.http.xml.pojo.Customer;
+import com.netty.protocol.http.xml.pojo.Address;
+import com.netty.protocol.http.xml.pojo.Order;
+import com.netty.protocol.http.xml.pojo.Shipping;
 import com.thoughtworks.xstream.XStream;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

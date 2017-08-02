@@ -1,4 +1,4 @@
-package com.netty.http.xml.codec;
+package com.netty.protocol.http.xml.codec;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.DefaultFullHttpResponse;

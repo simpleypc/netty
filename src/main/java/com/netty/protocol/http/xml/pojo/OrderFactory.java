@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.netty.http.xml.pojo;
+package com.netty.protocol.http.xml.pojo;
 
 /**
  * @author Administrator

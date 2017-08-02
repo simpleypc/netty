@@ -1,8 +1,8 @@
-package com.netty.http.xml.Test;
+package com.netty.protocol.http.xml.Test;
 
-import com.netty.http.xml.codec.HttpXmlRequest;
-import com.netty.http.xml.codec.HttpXmlResponse;
-import com.netty.http.xml.pojo.OrderFactory;
+import com.netty.protocol.http.xml.codec.HttpXmlRequest;
+import com.netty.protocol.http.xml.codec.HttpXmlResponse;
+import com.netty.protocol.http.xml.pojo.OrderFactory;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 

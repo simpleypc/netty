@@ -1,14 +1,10 @@
-package com.netty.http.xml.codec;
+package com.netty.protocol.http.xml.codec;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageDecoder;
 import io.netty.handler.codec.http.*;
 import io.netty.util.CharsetUtil;
-import org.msgpack.MessagePack;
-import org.msgpack.type.Value;
 
 import java.util.List;
 
