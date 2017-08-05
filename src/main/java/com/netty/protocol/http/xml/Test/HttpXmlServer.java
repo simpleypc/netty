@@ -1,4 +1,4 @@
-package com.netty.protocol.http.xml.Test;
+package com.netty.protocol.http.xml.test;
 
 import com.netty.protocol.http.xml.codec.HttpXmlRequestDecoder;
 import com.netty.protocol.http.xml.codec.HttpXmlResponseEncoder;
